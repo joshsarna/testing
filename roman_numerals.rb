@@ -17,7 +17,7 @@ class Numerator
     result << "V" * (number / 5)
     number %= 5
     result << "I" * (number / 1)
-    result.sub("DCCCC","MD")
+    result.sub("DCCCC","CM")
     result.sub("CCCC","CD")
     result.sub("LXXXX","XC")
     result.sub("XXXX","XL")
@@ -34,6 +34,11 @@ RSpec.describe Numerator do
       expect(result).to eq("I")
     end
     it 'should IV when given 4' do
+      numerator = Numerator.new
+      result = numerator.output(4)
+      expect(result).to eq("IV")
+    end
+    it 'should MCMXCIX when given 1994' do
       numerator = Numerator.new
       result = numerator.output(4)
       expect(result).to eq("IV")
